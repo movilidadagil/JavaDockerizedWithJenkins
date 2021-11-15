@@ -2,7 +2,7 @@ node {
   checkout scm
   env.PATH = "${tool 'maven-3.5.2'}/bin:${env.PATH}"
   stage('Package') {
-    dir('webapp') {
+    dir('JavaDockerizedWithJenkins') {
       sh 'mvn clean package -DskipTests'
     }
   }
