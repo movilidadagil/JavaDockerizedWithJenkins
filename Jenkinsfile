@@ -2,13 +2,13 @@ node {
   checkout scm
   env.PATH = "${tool 'maven-3.5.2'}/bin:${env.PATH}"
   stage('Package') {
-    dir('JavaDockerizedWithJenkins') {
+    dir('.') {
       sh 'mvn clean package -DskipTests'
     }
   }
 
   stage('Create Docker Image') {
-    dir('JavaDockerizedWithJenkins') {
+    dir('.') {
       docker.build("movilidadagil/JavaDockerizedWithJenkins:${env.BUILD_NUMBER}")
     }
   }
@@ -21,7 +21,7 @@ node {
       // Run application using Docker image
 
       // Run tests using Maven
-      dir ('JavaDockerizedWithJenkins') {
+      dir ('.') {
         sh 'mvn exec:java -DskipTests'
       }
     } catch (error) {
@@ -34,9 +34,9 @@ node {
 
   stage('Run Tests') {
     try {
-      dir('webapp') {
+      dir('.') {
         sh "mvn test"
-        docker.build("arungupta/docker-jenkins-pipeline:${env.BUILD_NUMBER}").push()
+             docker.build("movilidadagil/JavaDockerizedWithJenkins:${env.BUILD_NUMBER}").push()
       }
     } catch (error) {
 
