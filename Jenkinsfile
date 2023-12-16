@@ -36,7 +36,7 @@ node {
     try {
       dir('.') {
         sh "mvn test"
-             docker.build("movilidadagil/JavaDockerizedWithJenkins:${env.BUILD_NUMBER}").push()
+             docker.build("movilidadagil/java_dockerized_with_jenkins:${env.BUILD_NUMBER}").push()
       }
     } catch (error) {
 
