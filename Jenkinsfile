@@ -1,6 +1,6 @@
 node {
   checkout scm
-  env.PATH = "${tool 'maven-3.5.2'}/bin:${env.PATH}"
+  env.PATH = "${tool 'maven-3.6.3'}/bin:${env.PATH}"
   stage('Package') {
     dir('.') {
       sh 'mvn clean package -DskipTests'
