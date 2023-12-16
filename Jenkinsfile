@@ -9,7 +9,7 @@ node {
 
   stage('Create Docker Image') {
     dir('.') {
-      docker.build("movilidadagil/JavaDockerizedWithJenkins:${env.BUILD_NUMBER}")
+      docker.build("movilidadagil/java_dockerized_with_jenkins:${env.BUILD_NUMBER}")
     }
   }
 
